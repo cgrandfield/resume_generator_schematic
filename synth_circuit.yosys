@@ -1,0 +1,7 @@
+read -sv text_gen.v
+hierarchy -top text_gen
+write_ilang test_gen.ilang
+proc; opt
+techmap; opt
+write_verilog synth_text_gen.v
+write_json text_gen.json

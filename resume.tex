@@ -1,25 +1,14 @@
 \documentclass[a4paper,10pt]{article}
 
-%A Few Useful Packages
-\usepackage{marvosym}
-\usepackage{fontspec} 					%for loading fonts
-\usepackage{xunicode,xltxtra,url,parskip} 	%other packages for formatting
 \RequirePackage{color,graphicx}
 \usepackage[usenames,dvipsnames]{xcolor}
-\usepackage{fullpage} 				%better formatting of the A4 page
-\usepackage{supertabular} 				%for Grades
-\usepackage{titlesec}					%custom \section
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{tikz}
-\usepackage{eso-pic,graphicx}
-
+\usepackage{fullpage,titlesec,longtable,array,tikz,eso-pic,graphicx,hyperref,fontspec,xunicode,xltxtra,url,parskip} 
+\usepackage[top=1cm, bottom=1cm, outer=1cm, inner=1cm]{geometry}
 
 \definecolor{light-gray}{rgb}{0.65, 0.65, 0.65}
 \definecolor{dark-gray}{rgb}{0.2, 0.2, 0.2}
 
-\newcommand{\grade}[2][0]{%
-%1=#1 ; 2=#2
+\newcommand{\grade}[2][0]{
 \begin{tikzpicture}
 \clip (1em-.3em,-.3em) rectangle (5em +.5em ,.3em);
 \begin{scope}
@@ -37,68 +26,34 @@
 \foreach \x in {1,2,...,5}{
  \draw (\x em,0) circle (.25em);
 }
-\end{tikzpicture}%
+\end{tikzpicture}
 }
 
-%Setup hyperref package, and colours for links
-\usepackage{hyperref}
 \definecolor{linkcolour}{rgb}{0,0.2,0.6}
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
 
-%FONTS
+%fonts
 \defaultfontfeatures{Mapping=tex-text}
 \titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
 \titlespacing{\section}{0pt}{3pt}{3pt}
-%Reduce margins
-\addtolength{\textwidth}{2cm}
-\addtolength{\hoffset}{-1cm}
-\addtolength{\textheight}{3cm}
-\addtolength{\voffset}{-1.5cm}
 
-
-%-------------WATERMARK TEST [**not part of a CV**]---------------
-\usepackage[absolute]{textpos}
-
-\setlength{\TPHorizModule}{30mm}
-\setlength{\TPVertModule}{\TPHorizModule}
-\textblockorigin{2mm}{0.65\paperheight}
-\setlength{\parindent}{0pt}
-
- 
-
-%--------------------BEGIN DOCUMENT----------------------
 \begin{document}
 
-
-
 \AddToShipoutPictureBG*{
-	\includegraphics[width=\paperwidth,height=\paperheight]{export2.png}
-	%\includegraphics[width=\paperwidth]{export4.png}
-	%\AtPageCenter{\includegraphics[width=\paperwidth,height=\paperheight]{export4.png}}
-	%\AtStockCenter{\includegraphics[width=\paperwidth,height=\paperheight]{export4.png}}
-	
+    \includegraphics[width=\paperwidth,height=\paperheight]{export2.png}
 };
-%\clearpage
 
 \hspace{-0.75cm}
-\makebox[0pt][s]{%
-  \raisebox{-\totalheight}[0pt][0pt]{%
-    %\includegraphics[width=4in]{book}
+\makebox[0pt][s]{
+  \raisebox{-\totalheight}[0pt][0pt]{
 ``  \begin{tikzpicture}
-	%\draw[fill=white] (\paperwidth,\paperheight) rectangle ++(0.75*\paperwidth,0.75*\paperheight);
 	\draw[draw=white,fill=white, opacity=0.9] (0,0) rectangle ++(\paperwidth-2cm,\paperheight-4cm);
     \end{tikzpicture}
   }
-}%
+}
 
-\pagestyle{empty} % non-numbered pages
-
-\font\fb=''[cmr10]'' %for use with \LaTeX command
-
-%--------------------TITLE-------------
-
-%--------------------SECTIONS-----------------------------------
-%Section: Personal Data
+\pagestyle{empty}
+\font\fb=''[cmr10]''
 
 \par{\centering
 		{\Huge Charles Grandfield
@@ -107,17 +62,13 @@
 \vspace{1ex}
 
 \begin{tabular}{rl}
-%    \textsc{Location:}   & 194 Howland Avenue, M5R 3B6, Toronto, Canada \\
-
     \textsc{Phone:}      & +(1) 416-358-2902\\
     \textsc{email:}        & \href{mailto:charles.grandfield@utoronto.com}{charles.grandfield@utoronto.com}\\
     \textsc{LinkedIn:}   &  \href{https://www.linkedin.com/in/charles-grandfield-1aa5163b/}{https://www.linkedin.com/in/charles-grandfield-1aa5163b/} \\
-    \textsc{Location:}   &  Toronto, Canada 
+    \textsc{Location:}   &  Toronto, Canada
 \end{tabular}
 
 \vspace{1ex}
-
-%Section: Work Experience at the top
 \section{Qualifications}
 \begin{itemize}
 	\item Member of Technical Staff ASIC Design Engineer
@@ -128,23 +79,23 @@
 
 \section{Work Experience}
 \begin{longtable}{r|p{15cm}}
- \emph{Current} & Member of Technical Staff Engineer, \textsc{AMD}, Markham 
+ \emph{Current} & Member of Technical Staff Engineer, \textsc{AMD}, Markham
 \\\textsc{July 2018}&\emph{USB4 Logical Layer Design}\\&\footnotesize{
 
 \begin{itemize}\vspace*{-\baselineskip}
   \item USB4 logic / link layer design owner. Responsible for architectural specification and test plan review, implementation specification creation.
-  \item RTL implementation for 30+ blocks. Initial testbench verification. Analyzed, resolved CDC, Lint violations. Wrote .sdc and carried out trial synthesis (DesignCompiler, 7 nm), made design updates based on PrimeTime reports. 
-  \item Optimized verification environment to reduce run time for some block level verification test cases from 30+ minutes to less than 60 seconds. 
+  \item RTL implementation for 30+ blocks. Initial testbench verification. Analyzed, resolved CDC, Lint violations. Wrote .sdc and carried out trial synthesis (DesignCompiler, 7 nm), made design updates based on PrimeTime reports.
+  \item Optimized verification environment to reduce run time for some block level verification test cases from 30+ minutes to less than 60 seconds.
 \end{itemize}\vspace*{-\baselineskip}\vspace*{-\baselineskip}
 
 }\\\multicolumn{2}{c}{} \\
 
- \textsc{July 2018} & Senior ASIC / Layout Design Engineer, \textsc{AMD}, Marhkam 
+ \textsc{July 2018} & Senior ASIC / Layout Design Engineer, \textsc{AMD}, Marhkam
 \\\textsc{July 2016}&\emph{Vega12, Navi10 GPU DFT Integration Lead}\\&\footnotesize{
 \begin{itemize}\vspace*{-\baselineskip}
   \item Responsible for creation/configuration \& deployment of IEEE1500, IEEE1687, IEEE1149.1 networks , DFT clock gating, scan routing fabric and more. (tcl, ruby, make, perl, verilog).
   \item Worked closely with Front-End Integration to build physically aware DFT network as floorplan evolved based on Physical Design requirements in a deadline critical environment.
-  \item Mentored and coordinated with members of the SOC-DFT team to help orient them and enable integration \& design verification tasks. 
+  \item Mentored and coordinated with members of the SOC-DFT team to help orient them and enable integration \& design verification tasks.
 \end{itemize}\vspace*{-\baselineskip}\vspace*{-\baselineskip}
 }\\\multicolumn{2}{c}{} \\
 
@@ -152,47 +103,48 @@
 \\\textsc{Sept. 2014}&\emph{Design for Test, Design for Debug IP}\\&\footnotesize{
 
 \begin{itemize}\vspace*{-\baselineskip}
-  \item Created and delivered customized Design For Test RTL blocks to be consumed by many different functional teams in a deadline critical environment; received an AMD “Spotlight” Employee award for this work. 
+  \item Created and delivered customized Design For Test RTL blocks to be consumed by many different functional teams in a deadline critical environment; received an AMD “Spotlight” Employee award for this work.
   \item Implemented changes and enhancements (such as power gating support) to RTL generation flows responsible for elaboration/verification of chip-wide DFT logic (tcl, ruby, make, perl, verilog)
 \end{itemize}\vspace*{-\baselineskip}\vspace*{-\baselineskip}
 
 }\\\multicolumn{2}{c}{} \\
 
- \textsc{August 2013} & Professional Experience Year (PEY) Coop, \textsc{AMD}, Markham 
+ \textsc{August 2013} & Professional Experience Year (PEY) Coop, \textsc{AMD}, Markham
 \\\textsc{May 2012}    &\emph{Design for Test, Design for Debug IP Verification}\\
                                      &\footnotesize{
 \begin{itemize}\vspace*{-\baselineskip}
-  \item Named AMD Intern of the Year, from a pool of more than 150 interns.  
+  \item Named AMD Intern of the Year, from a pool of more than 150 interns.
   \item Conducted verification of DFT security features: proposed and reviewed verification strategy in test plan review meetings, developed direct tests and assertions (C++, System Verilog, OVL)
   \item Coordinated resolution for CDC (clock domain crossing) and linting violations, in some cases implementing fixes and reviewing with necessary stakeholders.
-  \item Responsible for maintenance of team's automated regression \& sanity (perl, tcsh, mysql) 
+  \item Responsible for maintenance of team's automated regression \& sanity (perl, tcsh, mysql)
 \end{itemize}\vspace*{-\baselineskip}\vspace*{-\baselineskip}
 }\\\multicolumn{2}{c}{} \\
 
-%\begin{minipage}
 \textsc{Summer 2011} & QA Intern, \textsc{ALT Software}, Toronto \\
                                      &\emph{OpenGL Driver testing}\\
                                      &\footnotesize{
 \begin{itemize}\vspace*{-\baselineskip}
   \item Developed C++ tests for ALT Software's OpenGL SC (Safety Critical) drivers
-  \item Set up and configured \textit{Jenkins} automated build and test server to provide same day automated feedback on build health to driver developers, accelerating workflow previously relying on next-day QA team review.  
-\end{itemize}\vspace*{-\baselineskip}\vspace*{-\baselineskip} %\end{minipage}
+  \item Set up and configured \textit{Jenkins} automated build and test server to provide same day automated feedback on build health to driver developers, accelerating workflow previously relying on next-day QA team review.
+\end{itemize}\vspace*{-\baselineskip}\vspace*{-\baselineskip}
 } \\\multicolumn{2}{c}{} \\
 
 \end{longtable}\vspace*{-\baselineskip}
 
 \newpage
-\AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{export5.png}};
+
+\AddToShipoutPictureBG*{
+    \includegraphics[width=\paperwidth,height=\paperheight]{export6.png}
+};
+
 \hspace{-0.75cm}
-\makebox[0pt][s]{%
-  \raisebox{-\totalheight}[0pt][0pt]{%
-    %\includegraphics[width=4in]{book}
+\makebox[0pt][s]{
+  \raisebox{-\totalheight}[0pt][0pt]{
 ``  \begin{tikzpicture}
-	%\draw[fill=white] (\paperwidth,\paperheight) rectangle ++(0.75*\paperwidth,0.75*\paperheight);
 	\draw[draw=white,fill=white, opacity=0.9] (0,0) rectangle ++(\paperwidth-2cm,\paperheight-4.5cm);
     \end{tikzpicture}
   }
-}%
+}
 
 \begin{longtable}{r|p{15cm}}
 
@@ -203,8 +155,6 @@
 \textsc{Summer 2008} & Research Assistant, \textsc{Quorum Funding Corporation}, Toronto \\\multicolumn{2}{c}{} \\
 
 \end{longtable}\vspace*{-\baselineskip}
-
-%Section: Education
 
 \section{Education}
 
@@ -225,9 +175,9 @@ sensors, an LCD screen, and 3 DC motors. \\
  \begin{flushleft}\textsc{Ontario Secondary School Diploma}, \mbox{\textbf{University of Toronto Schools}}, \mbox{\textsc{June} 2009}\end{flushleft}
 \begin{tabular}{m{2.5cm}|m{13cm}}
 \multicolumn{2}{c}{} \\
-\begin{flushright}Canadian National AP Scholar\end{flushright} & \footnotesize{ Received 5's (the highest grade) on the Computer Science AB, English Literature, Chemistry, Microeconomics and Macroeconomics Advanced Placement exams in May 2008  (Grade 11) qualifying for university credit in corresponding courses } \\ 
+\begin{flushright}Canadian National AP Scholar\end{flushright} & \footnotesize{ Received 5's (the highest grade) on the Computer Science AB, English Literature, Chemistry, Microeconomics and Macroeconomics Advanced Placement exams in May 2008  (Grade 11) qualifying for university credit in corresponding courses } \\
 \multicolumn{2}{c}{} \\
-\begin{flushright}Programming Club \end{flushright} & \footnotesize{Founding member and executive 2006-2008; President 2008-2009 ; Certificate of distinction, Canadian Computing Competition, Senior in 2008, 2009} 
+\begin{flushright}Programming Club \end{flushright} & \footnotesize{Founding member and executive 2006-2008; President 2008-2009 ; Certificate of distinction, Canadian Computing Competition, Senior in 2008, 2009}
 \end{tabular}\end{minipage}\\
 
 \section{Computer Skills}
@@ -236,11 +186,11 @@ sensors, an LCD screen, and 3 DC motors. \\
 \begin{tabular}{rlrlrl}
 Assembly (MIPS) :  & \grade[3]{1}   & Assembly (x86) : & \grade{1}      & Bash       :    & \grade{2}      \\
 C :                & \grade[4.5]{3} & C++ :            & \grade[4]{2}   & C\#        :    & \grade[3.5]{2} \\
-Haskell :          & \grade{1}      & Java :           & \grade[4]{2}   & JavaScript :    & \grade{2}      \\ 
-MySQL :            & \grade[2]{1}   & Perl :           & \grade[4]{3.5} & Python :        & \grade[3]{2}   \\ 
+Haskell :          & \grade{1}      & Java :           & \grade[4]{2}   & JavaScript :    & \grade{2}      \\
+MySQL :            & \grade[2]{1}   & Perl :           & \grade[4]{3.5} & Python :        & \grade[3]{2}   \\
 Ruby :             & \grade{3}      & tcl :            & \grade[4]{3}   & Tcsh :          & \grade{3}      \\
-Verilog :          & \grade{4}    & SystemVerilog :  & \grade{3}      & Python :        & \grade[3]{2}   \\ 
-VBA  :             & \grade[3]{2} 
+Verilog :          & \grade{4}    & SystemVerilog :  & \grade{3}      & Python :        & \grade[3]{2}   \\
+VBA  :             & \grade[3]{2}
 \end{tabular}
 
 \vspace*{-3ex}
@@ -257,15 +207,15 @@ USB4 (Logic Layer) :                & \grade[4]{4}  & USB4 (other) :            
 \subsection*{Software}\vspace*{-3ex}
 
 \begin{longtable}{r|p{16cm}}
-Design Tools & \footnotesize{ 
+Design Tools & \footnotesize{
 	Design Compiler, DVE, icarus verilog, magic, ModelSim, nWave, PrimeTime, Quartus, SpyGlass (CDC, Lint, DFT), VCS, VC LP, Verdi, verilator, yosys
 }\\\multicolumn{2}{c}{} \vspace*{-2ex} \\
 
-Productivity & \footnotesize{ 
+Productivity & \footnotesize{
 	{\fb \LaTeX}, Libre Office, Microsoft Office (Excel, Outlook, PowerPoint, SharePoint, Visio, Word), Open Office, vim
 }\\\multicolumn{2}{c}{} \vspace*{-2ex} \\
 
-Other & \footnotesize{ 
+Other & \footnotesize{
 	awk, cvs, git, GNU core-utils, linux, sed, svn, tmux
 }\\\multicolumn{2}{c}{} \vspace*{-2ex} \\
 
@@ -273,30 +223,19 @@ Other & \footnotesize{
 
 \newpage
 \AddToShipoutPictureBG*{
-	\includegraphics[width=\paperwidth,height=\paperheight]{export4.png}
-	%\includegraphics[width=\paperwidth]{export4.png}
-	%\AtPageCenter{\includegraphics[width=\paperwidth,height=\paperheight]{export4.png}}
-	%\AtStockCenter{\includegraphics[width=\paperwidth,height=\paperheight]{export4.png}}
-	
+    \includegraphics[width=\paperwidth,height=\paperheight]{export4.png}
 };
-%\clearpage
 
 \hspace{-0.75cm}
-\makebox[0pt][s]{%
-  \raisebox{-\totalheight}[0pt][0pt]{%
-    %\includegraphics[width=4in]{book}
+\makebox[0pt][s]{
+  \raisebox{-\totalheight}[0pt][0pt]{
 ``  \begin{tikzpicture}
-	%\draw[fill=white] (\paperwidth,\paperheight) rectangle ++(0.75*\paperwidth,0.75*\paperheight);
 	\draw[draw=white,fill=white, opacity=0.9] (0,0) rectangle ++(\paperwidth-2cm,6cm);
     \end{tikzpicture}
   }
-}%
+}
 
 \section{Miscellaneous}
-
-
-%Background images are taken from a schematic of a logical circuit which will generate the .tex representation of this resume when run, at a rate of 1 character per clock ; code available at  \href{https://github.com/cgrandfield/resume_generator_schematic/}{https://github.com/cgrandfield/resume_generator_schematic/} \\  
-
 
 \begin{tabular}{rl}
 2019 & CASI Level 1 certified snowboard instructor \\
@@ -305,7 +244,7 @@ Other & \footnotesize{
 2017 & ACSM (American College of Sports Mediicine) Certified Personal Trainer \\
 \end{tabular} \\
 
-Background images in this resume are taken from a schematic of a logical circuit which will generate the .tex representation of this document when run. \\ 
-Code available at :   \href{https://github.com/cgrandfield/resume_generator_schematic/}{https://github.com/cgrandfield/resume\_generator\_schematic/} \\  
+Background images in this resume are taken from a schematic of a logical circuit which will generate the .tex representation of this document when run. \\
+Code available at :   \href{https://github.com/cgrandfield/resume_generator_schematic/}{https://github.com/cgrandfield/resume\_generator\_schematic/} \\
 
 \end{document}
